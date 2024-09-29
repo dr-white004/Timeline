@@ -1,0 +1,222 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Posts Container */
+.posts-container {
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* Post Row */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Individual Post Card */
+.post-card {
+  background: #ffffff;
+  border: 2px solid #cccccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  flex: 1 0 40%;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px;
+  overflow: scroll;
+}
+
+/* Post Header */
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* User Avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Post User */
+.post-user {
+  font-weight: bold;
+  color: #1877F2;
+}
+
+/* Post Content */
+.post-content {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+/* Post Timing */
+.post-timing {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Like Section */
+.like-container {
+  margin-top: 15px;
+}
+
+/* Like Count Label */
+.like-count-label {
+  font-weight: bold;
+}
+
+/* Liked Post Style */
+.liked-post {
+  color: #ff3e30;
+}
+
+/* Pagination */
+.pagination {
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.page-item .page-link {
+  color: #1877F2;
+}
+
+.page-item .page-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .post-card {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .post-content {
+    font-size: 14px;
+  }
+
+  .post-timing {
+    font-size: 11px;
+  }
+}
+
+/* Animated Heading */
+.animated-heading {
+  display: inline-block;
+  font-size: 2rem;
+  color: #1877F2;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.animated-heading:hover {
+  transform: scale(1.05);
+  color: #0e5de6;
+}
+
+/* Additional Styling */
+.post-heading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile Header Styles */
+.writer-profile-header {
+  background-color: #f7f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.writer-profile-heading {
+  font-size: 2rem;
+  color: #1877F2;
+  margin: 0;
+}
+
+.writer-follow-count,
+.writer-following-count {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Posts Container Styles */
+.writer-posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Individual Post Styles */
+.writer-post {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.writer-post:hover {
+  transform: translateY(-5px);
+}
+
+/* User Link Styles */
+.writer-post-user-link {
+  text-decoration: none;
+}
+
+.writer-post-user {
+  font-weight: bold;
+  color: #1877F2;
+}
+
+/* Post Content Styles */
+.writer-post-content {
+  font-size: 1rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Timing and Likes Styles */
+.writer-post-timing,
+.writer-post-likes {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* Button Styles */
+.writer-btn-info {
+  background-color: #1877F2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.writer-btn-info:hover {
+  background-color: #0e5de6;
+}
