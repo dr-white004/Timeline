@@ -1,0 +1,113 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<h1 class="post-heading">Write a New Post</h1>
+
+<div class="post-form-container">
+    <form action="{% url 'newpost' %}" method="post" id="post-form">
+        {% csrf_token %}
+        <div class="textarea-container">
+            <textarea name="neww" id="neww" cols="30" rows="10" placeholder="What's on your mind?" required></textarea>
+            <div class="char-count" id="char-count">0/500</div>
+        </div>
+
+        <div class="button-container">
+            <input type="submit" value="Post" class="btn btn-info">
+        </div>
+    </form>
+
+    <div class="preview-container">
+        <h3>Preview:</h3>
+        <div id="post-preview" class="post-preview"></div>
+    </div>
+</div>
+
+<script>
+    // Character count functionality
+    const textarea = document.getElementById('neww');
+    const charCount = document.getElementById('char-count');
+    const preview = document.getElementById('post-preview');
+
+    textarea.addEventListener('input', function() {
+        const textLength = textarea.value.length;
+        charCount.innerText = `${textLength}/500`;
+        preview.innerText = textarea.value; // Live preview
+    });
+</script>
+
+<style>
+    /* Styles for the post form */
+    .post-form-container {
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-heading {
+        color: #1877F2; /* Facebook Blue */
+        margin-bottom: 15px;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .textarea-container {
+        position: relative;
+    }
+
+    textarea {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+    }
+
+    textarea:focus {
+        border-color: #1877F2;
+        outline: none;
+    }
+
+    .char-count {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        color: #999;
+        font-size: 0.9rem;
+    }
+
+    .button-container {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .btn-info {
+        background-color: #1877F2;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .btn-info:hover {
+        background-color: #0e5de6; /* Darker blue */
+    }
+
+    .preview-container {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    .post-preview {
+        color: #333;
+    }
+</style>
+
+{% endblock %}

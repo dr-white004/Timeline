@@ -1,0 +1,43 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<!-- Profile Header -->
+<div class="writer-profile-header">
+    <h1 class="writer-profile-heading">Writer's Profile</h1>
+    <p class="writer-follow-count">Being followed by: <span>{{ p.count }}</span></p>
+    <p class="writer-following-count">Following: <span>{{ q.count }}</span></p>
+</div>
+
+<!-- Posts Container -->
+<div class="writer-posts-container">
+    {% for post in allpost %}
+        <div class="writer-post" id="di{{ post.id }}">
+            <a href="{% url 'profile' nm=post.user %}" class="writer-post-user-link">
+                <p class="writer-post-user">{{ post.user }}</p>
+            </a>
+            <p class="writer-post-content" id="or{{ post.id }}">{{ post.post }}</p>
+            <p class="writer-post-timing">{{ post.timing }}</p>
+            <p class="writer-post-likes">{{ post.likes }}</p>
+            <div class="container border rounded mx-4 my-2 post-div">
+                <input type="hidden" class="post-id" value="{{ post.id }}"/>
+                <div class="row m-2">
+                    <div class="col">
+                        <span class="like-count-label {% if user in post.liked_by.all %}liked-post{% endif %}">{{ post.count_likes }}</span> likes
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Follow/Unfollow Button -->
+{% if not ed %}
+    <form action="{% url 'follow' nm=nm %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="{% if not check %}Follow{% else %}Unfollow{% endif %}" class="btn writer-btn-info">
+    </form>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<!-- Profile Header -->
+<h1 class="post-heading">
+  <span class="animated-heading">Posts from Users I'm Following</span>
+</h1>
+<p class="total-posts">Total Posts: {{ posts.count }} </p>
+
+<!-- Posts Container -->
+<div class="writer-posts-container">
+  
+      {% for post in posts %}
+          <div class="writer-post"> <!-- Two cards per row -->
+              <div class="post-div">
+                  <a href="{% url 'profile' nm=post.user %}" class="writer-post-user-link">
+                      <p class="writer-post-user">{{ post.user }}</p>
+                  </a>
+                  <p class="writer-post-content">{{ post.post }}</p>
+                  <p class="writer-post-timing">{{ post.timing }}</p>
+                  <div class="container border rounded mx-4 my-2">
+                    <input type="hidden" class="post-id" value="{{ post.id }}"/> <!-- Hidden input for post ID -->
+                    <div class="row m-2">
+                      <div class="col">
+                        <span class="like-count-label {% if user in post.liked_by.all %}liked-post{% endif %}">{{ post.count_likes }}</span> likes
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+  
+</div>
+
+<!-- Pagination -->
+<nav aria-label="Page navigation example">
+    <ul class="pagination d-flex justify-content-center">
+        {% if posts.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}">Previous</a></li>
+        {% endif %}
+        {% if posts.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ posts.next_page_number }}">Next</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
